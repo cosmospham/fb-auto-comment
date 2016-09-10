@@ -8,7 +8,7 @@ from random import randint
 import sys, traceback
 
 def spam():
-    token = "EAACEdEose0cBAEdGMv3RHKunWMnPxm1dLfRl3bqdXDYnZBHbDkUhM4DhRuumfaQzHheDINMZAsgCZC3ZAR4ZC7uJ9WyWLa7PpNJboo8ln3vsS1rHqIshPhloJ9YCzv3KbCZBZAVmzMLowokOF9XrkdlIr2HzIKo6B9wtKXLTpZAzlRWwgJZBmuigH" #Insert access token here.  
+    token = "EAACEdEose0cBADwSeMC3ZCLr7UMV9c6xWvXSfQHAkedsNIRVbVZBoTyiXncXgUke4d7repFvN7x67bTkDuWbbrsU8oomFspo8uPMyjITCjQwTF64nUPpKQABpPZBlslZA3cGkG6ZCX4WBZA6TJbsN9VbIgpm9QW1clZCFiMK8ZAMsbtwtb5cHrab" #Insert access token here.  
     facebook = fb.graph.api(token)
     # graph1 = GraphAPI(token)
 
@@ -22,10 +22,17 @@ def spam():
             content = f.readlines()
             for line in content:
                 if (len(line.strip())):
-                    print line
-                    millis = int(round(time.time()))
-                    print facebook.publish(cat = "feed", id = query, message = line+str(millis) ) #Comments on each post
-                    sleep(randint(50, 100))
+                    try:
+                        print line
+                        millis = int(round(time.time()))
+                        print facebook.publish(cat = "feed", id = query, message = line+str(millis) )
+                    except Exception, e:
+                       print e
+                    else:
+                        pass
+                    finally:
+                        sleep(randint(30, 60))
+                    
                     # sys.exit(0)
     else :
         print("No spam happening then.")
