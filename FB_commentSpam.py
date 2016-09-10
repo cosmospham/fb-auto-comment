@@ -18,7 +18,7 @@ def spam():
     
     
     idlist = [x['id'] for x in r['data']]
-    idlist.reverse()
+    # idlist.reverse()
     print("There are "+ str(len(idlist)) +" spammable posts.")
 
     char1 = raw_input("Do you want to spam? (y/n) ")
@@ -35,7 +35,7 @@ def spam():
                 count += 1
                 print("Notification number: " + str(count) + " on www.facebook.com/" + str(indid).split('_')[0] 
                   + "/posts/" + str(indid).split('_')[1])
-                sleep(randint(50, 100))
+                sleep(randint(5,10))
         else: 
           print("Not that many spammable posts available. No spam happening.")
     else :

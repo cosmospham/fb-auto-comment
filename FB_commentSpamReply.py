@@ -16,7 +16,7 @@ def spam():
     r = graph1.get(query)
     
     idlist = [x['id'] for x in r['data']]
-    idlist.reverse()
+    # idlist.reverse()
     print("There are "+ str(len(idlist)) +" spammable posts.")
 
     char1 = raw_input("Do you want to spam? (y/n) ")
